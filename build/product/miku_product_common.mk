@@ -112,7 +112,7 @@ SYSTEMUI_OPTIMIZE_JAVA ?= true
 
 # Dex preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUIGoogle
+    SystemUI
 
 # Compile everything
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
