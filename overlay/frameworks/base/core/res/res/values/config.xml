@@ -30,4 +30,13 @@
 
     <!-- Specifies the path that is used by AdaptiveIconDrawable class to crop launcher icons. -->
     <string name="config_icon_mask" translatable="false">"M50 0A50 50,0,1,1,50 100A50 50,0,1,1,50 0"</string>
+
+    <!-- Corner radius of system dialogs -->
+    <dimen name="config_dialogCornerRadius">8dp</dimen>
+    <!-- Corner radius of system buttons -->
+    <dimen name="config_buttonCornerRadius">4dp</dimen>
+    <!-- Corner radius for bottom sheet system dialogs -->
+    <dimen name="config_bottomDialogCornerRadius">16dp</dimen>
+    <!-- Corner radius of system progress bars -->
+    <dimen name="config_progressBarCornerRadius">1000dp</dimen>
 </resources>
