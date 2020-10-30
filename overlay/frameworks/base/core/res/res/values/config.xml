@@ -172,4 +172,7 @@
         <item>cx.ring</item>
         <item>org.briarproject.briar.android</item>
     </string-array>
+
+    <!-- Google Digital Wellbeing -->
+    <string name="config_defaultWellbeingPackage" translatable="false">com.google.android.apps.wellbeing</string>
 </resources>
