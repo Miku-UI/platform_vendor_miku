@@ -47,6 +47,12 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     ThemesStub
 
+# Lineage AudioFX
+ifneq ($(TARGET_EXCLUDES_AUDIOFX),true)
+PRODUCT_PACKAGES += \
+    AudioFX
+endif
+
 # Bootanimation
 PRODUCT_COPY_FILES += \
     vendor/miku/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
