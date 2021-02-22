@@ -41,6 +41,7 @@ SOONG_CONFIG_mikuNvidiaVars += \
 
 SOONG_CONFIG_NAMESPACES += mikuQcomVars
 SOONG_CONFIG_mikuQcomVars += \
+    legacy_hw_disk_encryption \
     uses_pre_uplink_features_netmgrd
 
 # Only create display_headers_namespace var if dealing with UM platforms to avoid breaking build for all other platforms
@@ -53,6 +54,7 @@ endif
 SOONG_CONFIG_mikuGlobalVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_mikuGlobalVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
 SOONG_CONFIG_mikuNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
+SOONG_CONFIG_mikuQcomVars_legacy_hw_disk_encryption := $(TARGET_LEGACY_HW_DISK_ENCRYPTION)
 SOONG_CONFIG_mikuQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_UPLINK_FEATURES_NETMGRD)
 
 # Set default values
