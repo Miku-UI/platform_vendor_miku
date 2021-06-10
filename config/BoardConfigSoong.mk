@@ -30,6 +30,7 @@ SOONG_CONFIG_NAMESPACES += mikuGlobalVars
 SOONG_CONFIG_mikuGlobalVars += \
     additional_gralloc_10_usage_bits \
     has_memfd_backport \
+    needs_camera_boottime \
     supports_extended_compress_format \
     target_init_vendor_lib \
     target_surfaceflinger_udfps_lib \
@@ -51,6 +52,7 @@ SOONG_CONFIG_mikuGlobalVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_mikuGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
 SOONG_CONFIG_mikuGlobalVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_mikuGlobalVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
 SOONG_CONFIG_mikuNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
