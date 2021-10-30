@@ -36,6 +36,10 @@ PRODUCT_PACKAGES += \
     Jelly \
     QuickAccessWallet
 
+# Blur
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.launcher.blur.appLaunch=false
+
 # OTA support
 PRODUCT_PACKAGES += \
     recovery-refresh \
