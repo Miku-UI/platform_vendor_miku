@@ -33,7 +33,8 @@ PRODUCT_PACKAGES += \
     TimeZoneUpdater \
     ThemePicker \
     messaging \
-    Jelly 
+    Jelly \
+    QuickAccessWallet
 
 # OTA support
 PRODUCT_PACKAGES += \
