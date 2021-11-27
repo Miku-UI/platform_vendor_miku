@@ -30,7 +30,10 @@ PRODUCT_PACKAGES += \
     PartnerBookmarksProvider \
     Stk \
     Tag \
-    TimeZoneUpdater
+    TimeZoneUpdater \
+    ThemePicker \
+    messaging \
+    Jelly 
 
 # OTA support
 PRODUCT_PACKAGES += \
