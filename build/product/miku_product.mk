@@ -24,10 +24,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_default.mk)
 
 $(call inherit-product, vendor/miku/config/common_full_phone.mk)
 
-# Shared java libs
-PRODUCT_PACKAGES += \
-    com.android.nfc_extras
-
 # Applications
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
