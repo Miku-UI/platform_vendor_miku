@@ -15,3 +15,5 @@
 # Vendor overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/miku/overlay
 
+# Enforce RRO targets
+PRODUCT_ENFORCE_RRO_TARGETS := *

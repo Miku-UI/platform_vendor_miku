@@ -92,9 +92,6 @@ PRODUCT_COPY_FILES += \
 # Put en_US first in the list, so make it default.
 PRODUCT_LOCALES := zh_rCN
 
-# Enforce RRO targets
-PRODUCT_ENFORCE_RRO_TARGETS := *
-
 # Disable extra StrictMode features on all non-engineering builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 
