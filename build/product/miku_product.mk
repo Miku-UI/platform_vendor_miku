@@ -99,7 +99,7 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
 
 # Put en_US first in the list, so make it default.
-PRODUCT_LOCALES := zh_rCN
+PRODUCT_LOCALES := zh_CN
 
 # Disable extra StrictMode features on all non-engineering builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
