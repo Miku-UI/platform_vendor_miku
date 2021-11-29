@@ -1,4 +1,3 @@
-
 #
 # Copyright (C) 2020 Raphielscape LLC. and Haruka LLC.
 # Copyright (C) 2021 MikuUI

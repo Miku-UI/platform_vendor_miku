@@ -1,3 +1,7 @@
+# Gboard
+PRODUCT_PACKAGES += \
+    Gboard
+
 # Telephony
 
 # World APN list
