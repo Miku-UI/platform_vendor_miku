@@ -22,19 +22,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_default.mk)
 
 # Inherit MikuUI products.
 
-$(call inherit-product, vendor/miku/config/common_full_phone.mk)
+$(call inherit-product, vendor/miku/config/common.mk)
 
 # Applications
 PRODUCT_PACKAGES += \
+    Gboard \
+    Jelly \
     LiveWallpapersPicker \
+    messaging \
     PartnerBookmarksProvider \
+    QuickAccessWallet \
     Stk \
     Tag \
     TimeZoneUpdater \
-    ThemePicker \
-    messaging \
-    Jelly \
-    QuickAccessWallet
+    ThemePicker 
+
 
 # Blur
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -45,6 +47,10 @@ PRODUCT_PACKAGES += \
     recovery-refresh \
     update_engine \
     update_verifier
+
+# World APN list
+PRODUCT_PACKAGES += \
+    apns-conf.xml
 
 # Wrapped net utils for /vendor access.
 PRODUCT_PACKAGES += netutils-wrapper-1.0
