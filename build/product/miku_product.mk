@@ -42,6 +42,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.launcher.blur.appLaunch=false
 
+# Bootanimation
+PRODUCT_PACKAGES += \
+    bootanimation.zip
+
 # OTA support
 PRODUCT_PACKAGES += \
     recovery-refresh \
