@@ -2,7 +2,7 @@
 # Copyright (C) 2018-2019 The Pixel3ROM Project
 # Copyright (C) 2020 Raphielscape LLC. and Haruka LLC.
 # Copyright (C) 2020 StormbreakerOSS
-# Copyright (C) 2021 MikuUI
+# Copyright (C) 2021 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

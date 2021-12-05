@@ -1,4 +1,4 @@
-// MikuUI soong configs
+// Miku UI soong configs
 
 bootstrap_go_package {
     name: "soong-miku-generator",

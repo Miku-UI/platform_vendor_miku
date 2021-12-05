@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2018 The Android Open Source Project
-# Copyright (C) 2021 MikuUI
+# Copyright (C) 2021 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,8 +20,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_default.mk)
 
-# Inherit MikuUI products.
-
+# Inherit miku products.
 $(call inherit-product, vendor/miku/config/common.mk)
 
 # Applications
