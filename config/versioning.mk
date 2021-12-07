@@ -20,7 +20,7 @@
 PLATFORM_MIKU_RELEASE := SNOW
 PLATFORM_MIKU_VERSION := $(PLATFORM_MIKU_RELEASE).$(shell date +%m%d%H%M)
 
-MIKU_ROM_VERSION := v0.5
+MIKU_ROM_VERSION := v0.6
 
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
@@ -35,10 +35,17 @@ else
     PROD_VERSION += MikuUI-$(PLATFORM_MIKU_VERSION)-$(TARGET_DEVICE)-$(shell date +%m%d%H%M)-UNOFFICIAL
 endif
 
+ifeq ($(MIKU_MASTER),)
+    TARGET_MIKU_MASTER := BuildBot
+else
+    TARGET_MIKU_MASTER := $(MIKU_MASTER)
+endif
 
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.system.miku.version=$(PLATFORM_MIKU_VERSION)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.miku.version=$(MIKU_ROM_VERSION)
+    ro.miku.version=$(MIKU_ROM_VERSION) \
+    ro.miku.buildtype=$(TARGET_MIKU_BUILD_VARIANT) \
+    ro.miku.maintainer=$(TARGET_MIKU_MASTER)
 
