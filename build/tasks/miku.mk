@@ -22,6 +22,7 @@ TARGET_FILES_PACKAGE := $(PRODUCT_OUT)/$(PROD_VERSION).zip
 .PHONY: diva
 diva: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_FILES_PACKAGE)
+	@echo -e ${CL_CYN}"diva"${CL_RST}
 	@echo -e ${CL_CYN}"\033[36m               ..,:cc::c,\033[0m"${CL_RST}
 	@echo -e ${CL_CYN}"\033[36m              ;xO000K0000l.\033[0m"${CL_RST}
 	@echo -e ${CL_CYN}"\033[36m             ,k00000000000o.\033[0m"${CL_RST}

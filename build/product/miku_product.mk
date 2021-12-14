@@ -51,6 +51,13 @@ PRODUCT_PACKAGES += \
     update_engine \
     update_verifier
 
+# Ringtone
+PRODUCT_COPY_FILES += \
+    vendor/miku/ringtone/miku_secret.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_secret.ogg
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=miku_secret.ogg
+
 # World APN list
 PRODUCT_PACKAGES += \
     apns-conf.xml
