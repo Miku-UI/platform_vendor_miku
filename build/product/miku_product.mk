@@ -20,8 +20,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/handheld_system.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony_system.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_default.mk)
 
-# Inherit miku products.
-$(call inherit-product, vendor/miku/config/common.mk)
+# Inherit from our versioning
+$(call inherit-product, vendor/miku/config/versioning.mk)
+
+# Inherit from our overlay
+$(call inherit-product, vendor/miku/config/overlay.mk)
+
+# Inherit from our kernel/header generator
+$(call inherit-product, vendor/miku/config/BoardConfigMiku.mk)
 
 # Applications
 PRODUCT_PACKAGES += \
