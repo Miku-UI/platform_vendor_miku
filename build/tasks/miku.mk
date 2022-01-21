@@ -19,9 +19,12 @@
 
 TARGET_FILES_PACKAGE := $(PRODUCT_OUT)/$(PROD_VERSION).zip
 
+SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
+
 .PHONY: diva
 diva: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(TARGET_FILES_PACKAGE)
+	$(hide) $(SHA256) $(TARGET_FILES_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(TARGET_FILES_PACKAGE).sha256sum
 	@echo -e ${CL_CYN}"diva"${CL_RST}
 	@echo -e ${CL_CYN}"\033[36m               ..,:cc::c,\033[0m"${CL_RST}
 	@echo -e ${CL_CYN}"\033[36m              ;xO000K0000l.\033[0m"${CL_RST}
@@ -58,5 +61,4 @@ diva: $(INTERNAL_OTA_PACKAGE_TARGET)
 	@echo -e ${CL_CYN}"\033[36m感谢各位对Miku UI的认可~最后请让我说一声：\033[0m"${CL_RST}
 	@echo -e ${CL_CYN}"\033[5;36;30m3 9！\033[0m"${CL_RST}
 	@echo "Package Complete: $(TARGET_FILES_PACKAGE)" >&2
-
-
+	@echo "Package Sha256sum: `cat $(TARGET_FILES_PACKAGE).sha256sum | cut -d ' ' -f 1`" >&2
