@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2018 The Android Open Source Project
-# Copyright (C) 2021 Miku UI
+# Copyright (C) 2021-2022 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -59,10 +59,12 @@ PRODUCT_PACKAGES += \
 
 # Ringtone
 PRODUCT_COPY_FILES += \
-    vendor/miku/ringtone/miku_secret.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_secret.ogg
+    vendor/miku/ringtone/miku_secret.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_secret.ogg \
+    vendor/miku/ringtone/miku_noti_msg.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/miku_noti_msg.ogg
 
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.config.ringtone=miku_secret.ogg
+    ro.config.ringtone=miku_secret.ogg \
+    ro.config.notification_sound=miku_noti_msg.ogg
 
 # World APN list
 PRODUCT_PACKAGES += \
