@@ -26,9 +26,6 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 # Inherit from our overlay
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
-# Inherit from our kernel/header generator
-$(call inherit-product, vendor/miku/config/BoardConfigMiku.mk)
-
 # Applications
 PRODUCT_PACKAGES += \
     Gboard \
