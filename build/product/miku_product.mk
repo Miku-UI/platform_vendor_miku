@@ -35,7 +35,6 @@ PRODUCT_PACKAGES += \
     PartnerBookmarksProvider \
     QuickAccessWallet \
     Stk \
-    Tag \
     TimeZoneUpdater \
     ThemePicker 
 
