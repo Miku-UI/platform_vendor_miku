@@ -189,14 +189,14 @@
             4 - Go to voice assist
             5 - Go to assistant (Settings.Secure.ASSISTANT)
     -->
-    <integer name="config_longPressOnPowerBehavior">5</integer>
+    <integer name="config_longPressOnPowerBehavior">1</integer>
 
     <!-- Control the behavior when the user presses the power and volume up buttons together.
             0 - Nothing
             1 - Mute toggle
             2 - Global actions menu
     -->
-    <integer name="config_keyChordPowerVolumeUp">2</integer>
+    <integer name="config_keyChordPowerVolumeUp">1</integer>
 
     <!-- Whether this device is supporting the microphone toggle -->
     <bool name="config_supportsMicToggle">true</bool>
