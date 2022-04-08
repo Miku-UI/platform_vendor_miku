@@ -85,6 +85,10 @@ PRODUCT_PACKAGES += \
 # For ringtones that rely on forward lock encryption
 PRODUCT_PACKAGES += libfwdlockengine
 
+# MikuWallpapers
+PRODUCT_PACKAGES += \
+    MikuWallpapers
+
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
 
