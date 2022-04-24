@@ -25,6 +25,10 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 # Inherit from our overlay
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
+# 2-Pane layout
+PRODUCT_PACKAGES += \
+    androidx.window.extensions
+
 # Applications
 PRODUCT_PACKAGES += \
     Gboard \
