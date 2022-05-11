@@ -110,9 +110,12 @@ PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
 SYSTEM_OPTIMIZE_JAVA ?= true
 SYSTEMUI_OPTIMIZE_JAVA ?= true
 
-# Dex preopt
+# SystemUI
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
+
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    dalvik.vm.systemuicompilerfilter=speed
 
 # Compile everything
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
