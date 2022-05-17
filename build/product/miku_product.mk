@@ -136,6 +136,9 @@ PRODUCT_COPY_FILES += \
     system/core/rootdir/init.zygote64.rc:system/etc/init/hw/init.zygote64.rc \
     system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
 
+# Compile everything
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
+
 # Put en_US first in the list, so make it default.
 PRODUCT_LOCALES := zh_CN
 
