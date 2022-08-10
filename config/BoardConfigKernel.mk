@@ -29,6 +29,8 @@
 #   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
 #   TARGET_KERNEL_NEW_GCC_COMPILE      = Compile kernel with newer version GCC, defaults to false
 #
+#   TARGET_KERNEL_DTBO_PREFIX          = Override path prefix of TARGET_KERNEL_DTBO.
+#                                        Defaults to empty
 #   TARGET_KERNEL_DTBO                 = Name of the kernel Makefile target that
 #                                        generates dtbo.img. Defaults to dtbo.img
 #   TARGET_KERNEL_DTB                  = Name of the kernel Makefile target that
@@ -165,8 +167,9 @@ endif
 
 # Set DTBO image locations so the build system knows to build them
 ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
+TARGET_KERNEL_DTBO_PREFIX ?=
 TARGET_KERNEL_DTBO ?= dtbo.img
-BOARD_PREBUILT_DTBOIMAGE ?= $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ/arch/$(KERNEL_ARCH)/boot/$(TARGET_KERNEL_DTBO)
+BOARD_PREBUILT_DTBOIMAGE ?= $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ/arch/$(KERNEL_ARCH)/boot/$(TARGET_KERNEL_DTBO_PREFIX)$(TARGET_KERNEL_DTBO)
 endif
 
 # Set the default dtb target
