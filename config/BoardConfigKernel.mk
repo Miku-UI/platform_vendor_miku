@@ -34,6 +34,9 @@
 #
 #   TARGET_KERNEL_LLVM_BINUTILS        = Use LLVM binutils, defaults to true
 #
+#   TARGET_KERNEL_NO_GCC               = Fully compile the kernel without GCC.
+#                                        Defaults to false
+#
 #   TARGET_KERNEL_DTBO_PREFIX          = Override path prefix of TARGET_KERNEL_DTBO.
 #                                        Defaults to empty
 #   TARGET_KERNEL_DTBO                 = Name of the kernel Makefile target that
@@ -74,6 +77,15 @@ KERNEL_VERSION := $(shell grep -s "^VERSION = " $(TARGET_KERNEL_SOURCE)/Makefile
 KERNEL_PATCHLEVEL := $(shell grep -s "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
 TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
+# 5.10+ can fully compile without GCC by default
+ifneq (,$(filter 5.10, $(TARGET_KERNEL_VERSION)))
+    TARGET_KERNEL_NO_GCC ?= true
+endif
+
+ifeq ($(TARGET_KERNEL_NO_GCC), true)
+    KERNEL_NO_GCC := true
+endif
+
 ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
     KERNEL_CLANG_VERSION := clang-$(TARGET_KERNEL_CLANG_VERSION)
 else
@@ -99,8 +111,7 @@ TOOLS_PATH_OVERRIDE := \
     LD_LIBRARY_PATH=$(BUILD_TOP)/prebuilts/tools-miku/$(HOST_PREBUILT_TAG)/lib:$$LD_LIBRARY_PATH \
     PERL5LIB=$(BUILD_TOP)/prebuilts/tools-miku/common/perl-base
 
-# 5.10+ can fully compile without gcc
-ifeq (,$(filter 5.10, $(TARGET_KERNEL_VERSION)))
+ifneq ($(KERNEL_NO_GCC), true)
     GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_PREBUILT_TAG)
     ifeq ($(TARGET_KERNEL_NEW_GCC_COMPILE),true)
         ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
