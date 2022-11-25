@@ -34,6 +34,7 @@ PRODUCT_PACKAGES += \
     Gboard \
     Jelly \
     LiveWallpapersPicker \
+    MUBB \
     PartnerBookmarksProvider \
     TimeZoneUpdater \
     ThemePicker 

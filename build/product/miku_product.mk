@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     Jelly \
     LiveWallpapersPicker \
     messaging \
+    MUBB \
     PartnerBookmarksProvider \
     QuickAccessWallet \
     Stk \
