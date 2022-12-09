@@ -37,7 +37,8 @@ PRODUCT_PACKAGES += \
     QuickAccessWallet \
     Stk \
     TimeZoneUpdater \
-    ThemePicker 
+    ThemePicker \
+    ThemesStub
 
 
 # Blur
