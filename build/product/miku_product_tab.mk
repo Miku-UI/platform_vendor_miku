@@ -37,7 +37,8 @@ PRODUCT_PACKAGES += \
     MUBB \
     PartnerBookmarksProvider \
     TimeZoneUpdater \
-    ThemePicker 
+    ThemePicker \
+    ThemesStub
 
 # Bootanimation
 PRODUCT_PACKAGES += \
