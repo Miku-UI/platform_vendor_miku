@@ -214,7 +214,7 @@ qti_camera_device {
 soong_config_module_type {
     name: "extended_compress_format",
     module_type: "cc_defaults",
-    config_namespace: "mikuGlobalVars",
+    config_namespace: "mikuQcomVars",
     bool_variables: ["supports_extended_compress_format"],
     properties: ["cflags"],
 }

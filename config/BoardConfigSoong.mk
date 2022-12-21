@@ -32,7 +32,6 @@ SOONG_CONFIG_mikuGlobalVars += \
     has_memfd_backport \
     gralloc_handle_has_reserved_size \
     needs_camera_boottime \
-    supports_extended_compress_format \
     target_init_vendor_lib \
     target_surfaceflinger_udfps_lib \
     uses_egl_display_array
@@ -44,6 +43,7 @@ SOONG_CONFIG_mikuNvidiaVars += \
 SOONG_CONFIG_NAMESPACES += mikuQcomVars
 SOONG_CONFIG_mikuQcomVars += \
     legacy_hw_disk_encryption \
+    supports_extended_compress_format \
     uses_pre_uplink_features_netmgrd
 
 # Only create display_headers_namespace var if dealing with UM platforms to avoid breaking build for all other platforms
@@ -55,7 +55,7 @@ endif
 # Soong bool variables
 SOONG_CONFIG_mikuGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_mikuGlobalVars_needs_camera_boottime := $(TARGET_CAMERA_BOOTTIME_TIMESTAMP)
-SOONG_CONFIG_mikuGlobalVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
+SOONG_CONFIG_mikuQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
 SOONG_CONFIG_mikuGlobalVars_uses_qti_camera_device := $(TARGET_USES_QTI_CAMERA_DEVICE)
 SOONG_CONFIG_mikuGlobalVars_uses_egl_display_array := $(TARGET_USES_EGL_DISPLAY_ARRAY)
 SOONG_CONFIG_mikuNvidiaVars_uses_nvidia_enhancements := $(NV_ANDROID_FRAMEWORK_ENHANCEMENTS)
