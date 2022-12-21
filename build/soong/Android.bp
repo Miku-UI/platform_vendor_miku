@@ -132,7 +132,7 @@ surfaceflinger_qcom_extensions {
 soong_config_module_type {
     name: "has_memfd_backport",
     module_type: "cc_defaults",
-    config_namespace: "customGlobalVars",
+    config_namespace: "mikuGlobalVars",
     bool_variables: ["has_memfd_backport"],
     properties: ["cppflags"],
 }
