@@ -2,7 +2,7 @@
 # Copyright (C) 2018-2019 The Pixel3ROM Project
 # Copyright (C) 2020 Raphielscape LLC. and Haruka LLC.
 # Copyright (C) 2020 StormbreakerOSS
-# Copyright (C) 2021-2022 Miku UI
+# Copyright (C) 2021-2023 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 PLATFORM_MIKU_RELEASE := TDA
 PLATFORM_MIKU_VERSION := $(PLATFORM_MIKU_RELEASE).$(shell date +%y%m%d%H)
 
-MIKU_ROM_VERSION := TDA_0.7.1
+MIKU_ROM_VERSION := TDA_0.8.0
 
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
