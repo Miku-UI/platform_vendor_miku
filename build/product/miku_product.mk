@@ -40,11 +40,6 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     ThemesStub
 
-
-# Blur
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.launcher.blur.appLaunch=false
-
 # Bootanimation
 PRODUCT_PACKAGES += \
     bootanimation.zip
