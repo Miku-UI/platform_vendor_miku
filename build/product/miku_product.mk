@@ -26,6 +26,9 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 # Inherit from our overlay
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
+# Require all requested packages to exist
+$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),)
+
 # Applications
 PRODUCT_PACKAGES += \
     Gboard \
