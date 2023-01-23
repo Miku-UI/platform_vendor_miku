@@ -27,7 +27,7 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
 # Require all requested packages to exist
-$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml)
+$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild)
 
 # Applications
 PRODUCT_PACKAGES += \
