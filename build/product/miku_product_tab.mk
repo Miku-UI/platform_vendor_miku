@@ -26,7 +26,7 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
 # Require all requested packages to exist
-$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo)
+$(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
 
 # 2-Pane layout
 PRODUCT_PACKAGES += \
