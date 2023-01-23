@@ -34,7 +34,6 @@ endif
 # Applications
 PRODUCT_PACKAGES += \
     Gboard \
-    Jelly \
     LiveWallpapersPicker \
     messaging \
     MUBB \
