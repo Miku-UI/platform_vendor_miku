@@ -45,8 +45,8 @@ PRODUCT_PACKAGES += \
     ThemesStub
 
 # Bootanimation
-PRODUCT_PACKAGES += \
-    bootanimation.zip
+PRODUCT_COPY_FILES += \
+    vendor/miku/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 
 # OTA support
 PRODUCT_PACKAGES += \
