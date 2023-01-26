@@ -1,25 +1,30 @@
+#
+# Copyright (C) 2022 Project Kaleidoscope
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
 # Platform names
-KONA ?= kona #SM8250
-LITO ?= lito #SM7250
-BENGAL ?= bengal #SM6115
-MSMNILE ?= msmnile #SM8150
-MSMSTEPPE ?= sm6150
-TRINKET ?= trinket #SM6125
-ATOLL ?= atoll #SM6250
-LAHAINA ?= lahaina #SM8350
-HOLI ?= holi #SM4350
+KONA := kona #SM8250
+LITO := lito #SM7250
+BENGAL := bengal #SM6115
+MSMNILE := msmnile #SM8150
+MSMSTEPPE := sm6150
+TRINKET := trinket #SM6125
+ATOLL := atoll #SM6250
+LAHAINA := lahaina #SM8350
 
 UM_3_18_FAMILY := msm8937 msm8953 msm8996
 UM_4_4_FAMILY := msm8998 sdm660
 UM_4_9_FAMILY := sdm845 sdm710
 UM_4_14_FAMILY := $(MSMNILE) $(MSMSTEPPE) $(TRINKET) $(ATOLL)
 UM_4_19_FAMILY := $(KONA) $(LITO) $(BENGAL)
-UM_5_4_FAMILY := $(LAHAINA) $(HOLI)
+UM_5_4_FAMILY := $(LAHAINA)
 UM_PLATFORMS := $(UM_3_18_FAMILY) $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY)
-LEGACY_UM_PLATFORMS := msm8953 $(UM_3_18_FAMILY) $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY)
+LEGACY_UM_PLATFORMS := $(UM_3_18_FAMILY) $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY)
 QSSI_SUPPORTED_PLATFORMS := $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY)
 
-ifeq ($(TARGET_USES_UM_4_19),true)
+ifneq (, $(filter true, $(TARGET_USES_UM_4_19) $(TARGET_USES_UM_4_9)))
     QSSI_SUPPORTED_PLATFORMS += $(TARGET_BOARD_PLATFORM)
 endif
 
@@ -34,6 +39,7 @@ SOONG_CONFIG_qtidisplay += \
     headless \
     llvmsa \
     gralloc4 \
+    udfps \
     default
 
 # Set default values for qtidisplay config
@@ -41,6 +47,7 @@ SOONG_CONFIG_qtidisplay_drmpp ?= false
 SOONG_CONFIG_qtidisplay_headless ?= false
 SOONG_CONFIG_qtidisplay_llvmsa ?= false
 SOONG_CONFIG_qtidisplay_gralloc4 ?= false
+SOONG_CONFIG_qtidisplay_udfps ?= false
 SOONG_CONFIG_qtidisplay_default ?= true
 
 # Tell HALs that we're compiling an AOSP build with an in-line kernel
@@ -53,12 +60,10 @@ TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_USES_QCOM_MM_AUDIO := true
 
 # Enable color metadata for every UM platform
-ifneq ($(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-    TARGET_USES_COLOR_METADATA := true
-endif
+TARGET_USES_COLOR_METADATA := true
 
 # Enable DRM PP driver on UM platforms that support it
-ifeq ($(call is-board-platform-in-list, $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY)) $(UM_5_4_FAMILY),true)
+ifneq ($(filter $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     SOONG_CONFIG_qtidisplay_drmpp := true
     TARGET_USES_DRM_PP := true
 endif
@@ -70,11 +75,6 @@ endif
 
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
 
-# Mark GRALLOC_USAGE_HW_2D as valid gralloc bit on legacy platforms that support it
-ifneq ($(filter msm8960 msm8952 $(B_FAMILY) $(B64_FAMILY) $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 10)
-endif
-
 # Mark GRALLOC_USAGE_EXTERNAL_DISP as valid gralloc bit
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 13)
 
@@ -82,7 +82,7 @@ TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 13)
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 21)
 
 # Mark GRALLOC_USAGE_PRIVATE_HEIF_VIDEO as valid gralloc bit on UM platforms that support it
-ifeq ($(call is-board-platform-in-list, $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY)),true)
+ifneq ($(filter $(UM_4_9_FAMILY) $(UM_4_14_FAMILY) $(UM_4_19_FAMILY) $(UM_5_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
     TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 27)
 endif
 
@@ -116,17 +116,15 @@ ifneq ($(OVERRIDE_QCOM_HARDWARE_VARIANT),)
     QCOM_HARDWARE_VARIANT := $(OVERRIDE_QCOM_HARDWARE_VARIANT)
 endif
 
-# Add dataservices to PRODUCT_SOONG_NAMESPACES if needed
-ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
-    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
-endif
+# Allow a device to opt-out hardset of PRODUCT_SOONG_NAMESPACES
+QCOM_SOONG_NAMESPACE ?= hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
+PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
 
 # Add display-commonsys and display-commonsys-intf to PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
     PRODUCT_SOONG_NAMESPACES += \
         vendor/qcom/opensource/commonsys/display \
-	    vendor/qcom/opensource/commonsys-intf/display \
-        vendor/qcom/opensource/display
+	vendor/qcom/opensource/commonsys-intf/display
 endif
 
 # Add data-ipa-cfg-mgr to PRODUCT_SOONG_NAMESPACES if needed
@@ -138,10 +136,7 @@ ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
     endif
 endif
 
-PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
-
-# QCOM HW crypto
-ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
-    TARGET_CRYPTFS_HW_PATH ?= vendor/qcom/opensource/cryptfs_hw
+# Add dataservices to PRODUCT_SOONG_NAMESPACES if needed
+ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
+    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
 endif

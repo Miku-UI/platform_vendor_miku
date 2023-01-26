@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2022 Project Kaleidoscope
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- Enable round icons by default. -->
+    <bool name="config_useRoundIcon">true</bool>
+
+    <!-- Specifies the path that is used by AdaptiveIconDrawable class to crop launcher icons. -->
+    <string name="config_icon_mask" translatable="false">"M50 0C77.6 0 100 22.4 100 50C100 77.6 77.6 100 50 100C22.4 100 0 77.6 0 50C0 22.4 22.4 0 50 0Z"</string>
+
+    <!-- Wallpaper cropper package. Used as the default cropper if the active launcher doesn't
+         handle wallpaper cropping.
+    -->
+    <string name="config_wallpaperCropperPackage" translatable="false">com.android.wallpaper</string>
+
+    <!-- Control the behavior when the user long presses the power button.
+            0 - Nothing
+            1 - Global actions menu
+            2 - Power off (with confirmation)
+            3 - Power off (without confirmation)
+            4 - Go to voice assist
+            5 - Go to assistant (Settings.Secure.ASSISTANT)
+    -->
+    <integer name="config_longPressOnPowerBehavior">1</integer>
+
+    <!-- Control the behavior when the user presses the power and volume up buttons together.
+            0 - Nothing
+            1 - Mute toggle
+            2 - Global actions menu
+    -->
+    <integer name="config_keyChordPowerVolumeUp">1</integer>
+
+    <!-- Whether this device is supporting the microphone toggle -->
+    <bool name="config_supportsMicToggle">true</bool>
+    <!-- Whether this device is supporting the camera toggle -->
+    <bool name="config_supportsCamToggle">true</bool>
+
+    <!-- Whether action menu items should be displayed in ALLCAPS or not.
+         Defaults to true. If this is not appropriate for specific locales
+         it should be disabled in that locale's resources. -->
+    <bool name="config_buttonTextAllCaps">false</bool>
+
+    <!-- Controls the navigation bar interaction mode:
+         0: 3 button mode (back, home, overview buttons)
+         1: 2 button mode (back, home buttons + swipe up for overview)
+         2: gestures only for back, home and overview -->
+    <integer name="config_navBarInteractionMode">2</integer>
+
+    <!-- Whether Multiuser UI should be shown -->
+    <bool name="config_enableMultiUserUI">true</bool>
+
+    <!-- Maximum number of supported users -->
+    <integer name="config_multiuserMaximumUsers">4</integer>
+
+    <!-- Set this to true to enable the platform's auto-power-save modes
+         like doze and app standby. -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
+    <!-- Flag indicating which package name can access DeviceConfig table -->
+    <string name="config_deviceConfiguratorPackageName" translatable="false">org.protonaosp.deviceconfig</string>
+
+    <!-- If this is true, long press on power button will be available from the non-interactive state -->
+    <bool name="config_supportLongPressPowerWhenNonInteractive">true</bool>
+
+     <!-- Colon separated list of package names that should be granted Notification Listener access -->
+     <string name="config_defaultListenerAccessPackages" translatable="false">com.android.launcher3</string>
+
+     <!-- Name of a font family to use for body text. -->
+    <string name="config_bodyFontFamily" translatable="false">google-sans-text</string>
+
+    <!-- Name of a font family to use for medium body text. -->
+    <string name="config_bodyFontFamilyMedium" translatable="false">google-sans-text-medium</string>
+
+    <!-- Name of a font family to use for headlines. If empty, falls back to platform default -->
+    <string name="config_headlineFontFamily" translatable="false">google-sans</string>
+
+    <!-- Name of the font family used for system surfaces where the font should use medium weight -->
+    <string name="config_headlineFontFamilyMedium" translateable="false">google-sans-medium</string>
+
+    <!-- Allows setting custom fontFeatureSettings on specific text. -->
+    <string name="config_headlineFontFeatureSettings" translatable="false">ss03</string>
+
+    <!-- Name of the font family to use in the default lockscreen clock -->
+    <string name="config_clockFontFamily" translatable="false">google-sans-clock</string>
+
+</resources>

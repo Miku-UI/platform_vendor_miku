@@ -1,3 +1,9 @@
+#
+# Copyright (C) 2021-2023 Miku UI
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
 # Kernel
 include vendor/miku/config/BoardConfigKernel.mk
 

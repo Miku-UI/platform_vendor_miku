@@ -31,6 +31,10 @@
 #
 #   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
 #
+#   TARGET_KERNEL_CLANG_VERSION        = Clang prebuilts version, optional, defaults to clang-stable
+#
+#   TARGET_KERNEL_CLANG_PATH           = Clang prebuilts path, optional
+#
 #   BOARD_KERNEL_IMAGE_NAME            = Built image name
 #                                          for ARM use: zImage
 #                                          for ARM64 use: Image.gz
@@ -40,11 +44,7 @@
 #                                          For example, for ARM devices,
 #                                          use zImage-dtb instead of zImage.
 #
-#   BOARD_DTB_CFG                      = Path to a mkdtboimg.py config file for dtb.img
-#
 #   BOARD_DTBO_CFG                     = Path to a mkdtboimg.py config file
-#
-#   BOARD_CUSTOM_DTBIMG_MK             = Path to a custom dtbimage makefile
 #
 #   BOARD_CUSTOM_DTBOIMG_MK            = Path to a custom dtboimage makefile
 #
@@ -64,7 +64,11 @@
 #                                          modules in system instead of vendor
 #   NEED_KERNEL_MODULE_VENDOR_OVERLAY  = Optional, if true, install kernel
 #                                          modules in vendor_overlay instead of vendor
+#
+#   TARGET_FORCE_PREBUILT_KERNEL       = Optional, use TARGET_PREBUILT_KERNEL even if
+#                                          kernel sources are present
 
+ifneq ($(TARGET_PROVIDES_KERNEL_MAKEFILE),true)
 ifneq ($(TARGET_NO_KERNEL),true)
 
 ## Externally influenced variables
@@ -77,7 +81,6 @@ SELINUX_DEFCONFIG := $(TARGET_KERNEL_SELINUX_CONFIG)
 
 ## Internal variables
 DTC := $(HOST_OUT_EXECUTABLES)/dtc
-PAHOLE := $(HOST_OUT_EXECUTABLES)/pahole
 KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ
 RECOVERY_KERNEL_OUT := $(TARGET_OUT_INTERMEDIATES)/RECOVERY_KERNEL_OBJ
 DTBO_OUT := $(TARGET_OUT_INTERMEDIATES)/DTBO_OBJ
@@ -92,18 +95,6 @@ KERNEL_DEFCONFIG_ARCH := x86
 else
 KERNEL_DEFCONFIG_ARCH := $(KERNEL_ARCH)
 endif
-KERNEL_DEFCONFIG_SRC := $(KERNEL_SRC)/arch/$(KERNEL_DEFCONFIG_ARCH)/configs/$(KERNEL_DEFCONFIG)
-
-ifeq ($(BOARD_KERNEL_IMAGE_NAME),)
-$(error BOARD_KERNEL_IMAGE_NAME not defined.)
-endif
-ifneq ($(TARGET_USES_UNCOMPRESSED_KERNEL),)
-$(error TARGET_USES_UNCOMPRESSED_KERNEL is deprecated.)
-endif
-ifneq ($(TARGET_KERNEL_APPEND_DTB),)
-$(error TARGET_KERNEL_APPEND_DTB is deprecated.)
-endif
-TARGET_PREBUILT_INT_KERNEL := $(KERNEL_OUT)/arch/$(KERNEL_ARCH)/boot/$(BOARD_KERNEL_IMAGE_NAME)
 KERNEL_DEFCONFIG_DIR := $(KERNEL_SRC)/arch/$(KERNEL_DEFCONFIG_ARCH)/configs
 ALL_KERNEL_DEFCONFIG_SRCS := $(foreach config,$(KERNEL_DEFCONFIG),$(KERNEL_DEFCONFIG_DIR)/$(config))
 ALL_RECOVERY_KERNEL_DEFCONFIG_SRCS := $(foreach config,$(RECOVERY_DEFCONFIG),$(KERNEL_DEFCONFIG_DIR)/$(config))
@@ -137,7 +128,7 @@ ifeq "$(wildcard $(KERNEL_SRC) )" ""
     ifneq ($(HAS_PREBUILT_KERNEL),)
         $(warning ***************************************************************)
         $(warning * Using prebuilt kernel binary instead of source              *)
-        $(warning * THIS IS DEPRECATED, AND WILL BE DISCONTINUED                *)
+        $(warning * THIS IS DEPRECATED, AND IS NOT ADVISED.                     *)
         $(warning * Please configure your device to download the kernel         *)
         $(warning * source repository to $(KERNEL_SRC))
         $(warning * for more information                                        *)
@@ -171,12 +162,14 @@ else
     else
         ifneq ($(TARGET_FORCE_PREBUILT_KERNEL),)
             $(warning **********************************************************)
-            $(warning * Kernel source found and configuration was defined      *)
-            $(warning * but prebuilt kernel is being enforced.                 *)
-            $(warning * While there may be a good reason for this,             *)
-            $(warning * THIS IS NOT ADVISED.                                   *)
-            $(warning * Please configure your device to build the kernel       *)
-            $(warning * from source by unsetting TARGET_FORCE_PREBUILT_KERNEL  *)
+            $(warning * Kernel source found and configuration was defined,     *)
+            $(warning * but prebuilt kernel is being forced.                   *)
+            $(warning * While this is likely intentional,                      *)
+            $(warning * it is NOT SUPPORTED WHATSOEVER.                        *)
+            $(warning * Generated kernel headers may not align with            *)
+            $(warning * the ABI of kernel you're including.                    *)
+            $(warning * Please unset TARGET_FORCE_PREBUILT_KERNEL              *)
+            $(warning * to build the kernel from source.                       *)
             $(warning **********************************************************)
             FULL_KERNEL_BUILD := false
             KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
@@ -229,25 +222,31 @@ ifeq ($(or $(FULL_RECOVERY_KERNEL_BUILD), $(FULL_KERNEL_BUILD)),true)
 # Add host bin out dir to path
 PATH_OVERRIDE := PATH=$(KERNEL_BUILD_OUT_PREFIX)$(HOST_OUT_EXECUTABLES):$$PATH
 ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
-    ifneq ($(KERNEL_NO_GCC), true)
-        ifeq ($(KERNEL_ARCH),arm64)
-            KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=aarch64-linux-gnu-
-        else ifeq ($(KERNEL_ARCH),arm)
-            KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=arm-linux-gnu-
-        else ifeq ($(KERNEL_ARCH),x86)
-            KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=x86_64-linux-gnu-
-        endif
-        PATH_OVERRIDE += LD_LIBRARY_PATH=$(TARGET_KERNEL_CLANG_PATH)/lib64:$$LD_LIBRARY_PATH
+    ifneq ($(TARGET_KERNEL_CLANG_VERSION),)
+        KERNEL_CLANG_VERSION := clang-$(TARGET_KERNEL_CLANG_VERSION)
+    else
+        # Use the default version of clang if TARGET_KERNEL_CLANG_VERSION hasn't been set by the device config
+        KERNEL_CLANG_VERSION := $(LLVM_PREBUILTS_VERSION)
     endif
-    PATH_OVERRIDE += PATH=$(TARGET_KERNEL_CLANG_PATH)/bin:$$PATH
+    TARGET_KERNEL_CLANG_PATH ?= $(BUILD_TOP)/prebuilts/clang/host/$(HOST_PREBUILT_TAG)/$(KERNEL_CLANG_VERSION)
+    ifeq ($(KERNEL_ARCH),arm64)
+        KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=aarch64-linux-gnu-
+    else ifeq ($(KERNEL_ARCH),arm)
+        KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=arm-linux-gnu-
+    else ifeq ($(KERNEL_ARCH),x86)
+        KERNEL_CLANG_TRIPLE ?= CLANG_TRIPLE=x86_64-linux-gnu-
+    endif
+    PATH_OVERRIDE += PATH=$(TARGET_KERNEL_CLANG_PATH)/bin:$$PATH LD_LIBRARY_PATH=$(TARGET_KERNEL_CLANG_PATH)/lib64:$$LD_LIBRARY_PATH
     ifeq ($(KERNEL_CC),)
         KERNEL_CC := CC="$(CCACHE_BIN) clang"
     endif
 endif
 
-ifneq ($(KERNEL_NO_GCC), true)
-    PATH_OVERRIDE += PATH=$(KERNEL_TOOLCHAIN_PATH_gcc):$$PATH
+ifneq ($(TARGET_KERNEL_MODULES),)
+    $(error TARGET_KERNEL_MODULES is no longer supported!)
 endif
+
+PATH_OVERRIDE += PATH=$(KERNEL_TOOLCHAIN_PATH_gcc):$$PATH
 
 # System tools are no longer allowed on 10+
 PATH_OVERRIDE += $(TOOLS_PATH_OVERRIDE)
@@ -393,10 +392,6 @@ ifneq (,$(filter dlkm,$(BOARD_VENDOR_RAMDISK_FRAGMENTS)))
 KERNEL_VENDOR_RAMDISK_MODULES_OUT := $(VENDOR_RAMDISK_FRAGMENT.dlkm.STAGING_DIR)
 KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_ramdisk_fragment-stage-dlkm)
 $(INTERNAL_VENDOR_RAMDISK_FRAGMENT_TARGETS): $(TARGET_PREBUILT_INT_KERNEL)
-else ifeq ($(PRODUCT_BUILD_VENDOR_KERNEL_BOOT_IMAGE),true)
-KERNEL_VENDOR_RAMDISK_MODULES_OUT := $(TARGET_VENDOR_KERNEL_RAMDISK_OUT)
-KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_kernel_ramdisk)
-$(INTERNAL_VENDOR_KERNEL_RAMDISK_TARGET): $(TARGET_PREBUILT_INT_KERNEL)
 else
 KERNEL_VENDOR_RAMDISK_MODULES_OUT := $(TARGET_VENDOR_RAMDISK_OUT)
 KERNEL_VENDOR_RAMDISK_DEPMOD_STAGING_DIR := $(KERNEL_BUILD_OUT_PREFIX)$(call intermediates-dir-for,PACKAGING,depmod_vendor_ramdisk)
@@ -410,7 +405,7 @@ $(KERNEL_CONFIG): $(KERNEL_OUT) $(ALL_KERNEL_DEFCONFIG_SRCS)
 	@echo "Building Kernel Config"
 	$(call make-kernel-config,$(KERNEL_OUT),$(KERNEL_DEFCONFIG))
 
-$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD) $(DTC) $(PAHOLE)
+$(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD) $(DTC)
 	@echo "Building Kernel Image ($(BOARD_KERNEL_IMAGE_NAME))"
 	$(call make-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
 	$(hide) if grep -q '^CONFIG_OF=y' $(KERNEL_CONFIG); then \
@@ -492,17 +487,10 @@ endif # BOARD_CUSTOM_DTBOIMG_MK
 endif # TARGET_NEEDS_DTBOIMAGE/BOARD_KERNEL_SEPARATED_DTBO
 
 ifeq ($(BOARD_INCLUDE_DTB_IN_BOOTIMG),true)
-ifneq ($(BOARD_CUSTOM_DTBIMG_MK),)
-include $(BOARD_CUSTOM_DTBIMG_MK)
-else
 ifeq ($(BOARD_PREBUILT_DTBIMAGE_DIR),)
 $(DTB_OUT):
 	mkdir -p $(DTB_OUT)
 
-ifdef BOARD_DTB_CFG
-MKDTBOIMG := $(HOST_OUT_EXECUTABLES)/mkdtboimg.py$(HOST_EXECUTABLE_SUFFIX)
-$(INSTALLED_DTBIMAGE_TARGET): $(MKDTBOIMG)
-endif
 $(INSTALLED_DTBIMAGE_TARGET): $(DTC) $(DTB_OUT)
 ifeq ($(TARGET_WANTS_EMPTY_DTB),true)
 	@rm -f $@
@@ -512,16 +500,11 @@ else
 	$(hide) find $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | xargs rm -f
 	$(call make-dtb-target,$(KERNEL_DEFCONFIG))
 	$(call make-dtb-target,$(TARGET_KERNEL_DTB))
-ifdef BOARD_DTB_CFG
-	$(MKDTBOIMG) cfg_create $@ $(BOARD_DTB_CFG) -d $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts
-else
 	cat $(shell find $(DTB_OUT)/arch/$(KERNEL_ARCH)/boot/dts -type f -name "*.dtb" | sort) > $@
-endif # BOARD_DTB_CFG
 	$(hide) touch -c $(DTB_OUT)
 endif # !TARGET_WANTS_EMPTY_DTB
 
 endif # !BOARD_PREBUILT_DTBIMAGE_DIR
-endif # BOARD_CUSTOM_DTBIMG_MK
 endif # BOARD_INCLUDE_DTB_IN_BOOTIMG
 
 endif # FULL_KERNEL_BUILD
@@ -535,7 +518,7 @@ $(RECOVERY_KERNEL_CONFIG): $(ALL_RECOVERY_KERNEL_DEFCONFIG_SRCS)
 	@echo "Building Recovery Kernel Config"
 	$(call make-kernel-config,$(RECOVERY_KERNEL_OUT),$(RECOVERY_DEFCONFIG))
 
-$(TARGET_PREBUILT_INT_RECOVERY_KERNEL): $(RECOVERY_KERNEL_CONFIG) $(DEPMOD) $(DTC) $(PAHOLE)
+$(TARGET_PREBUILT_INT_RECOVERY_KERNEL): $(RECOVERY_KERNEL_CONFIG) $(DEPMOD) $(DTC)
 	@echo "Building Recovery Kernel Image ($(BOARD_KERNEL_IMAGE_NAME))"
 	$(call make-recovery-kernel-target,$(BOARD_KERNEL_IMAGE_NAME))
 
@@ -567,3 +550,4 @@ dtboimage: $(INSTALLED_DTBOIMAGE_TARGET)
 dtbimage: $(INSTALLED_DTBIMAGE_TARGET)
 
 endif # TARGET_NO_KERNEL
+endif # TARGET_PROVIDES_KERNEL_MAKEFILE
