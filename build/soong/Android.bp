@@ -1,4 +1,4 @@
-// Miku UI soong configs
+// Miku soong configs
 
 bootstrap_go_package {
     name: "soong-miku-generator",
@@ -64,6 +64,23 @@ gralloc_10_usage_bits {
 }
 
 soong_config_module_type {
+    name: "target_process_sdk_version_overrides",
+    module_type: "cc_defaults",
+    config_namespace: "mikuGlobalVars",
+    value_variables: ["target_process_sdk_version_override"],
+    properties: ["cppflags"],
+}
+
+target_process_sdk_version_overrides {
+    name: "process_sdk_version_overrides_defaults",
+    soong_config_variables: {
+        target_process_sdk_version_override: {
+            cppflags: ["-DSDK_VERSION_OVERRIDES=\"%s\""],
+        },
+    },
+}
+
+soong_config_module_type {
     name: "gralloc_handle_reserved_size",
     module_type: "cc_defaults",
     config_namespace: "mikuGlobalVars",
@@ -88,6 +105,15 @@ soong_config_module_type {
     properties: ["whole_static_libs"],
 }
 
+vendor_init {
+    name: "vendor_init_defaults",
+    soong_config_variables: {
+        target_init_vendor_lib: {
+            whole_static_libs: ["%s"],
+        },
+    },
+}
+
 soong_config_module_type {
     name: "surfaceflinger_udfps_lib",
     module_type: "cc_defaults",
@@ -110,103 +136,40 @@ surfaceflinger_udfps_lib {
 }
 
 soong_config_module_type {
-    name: "surfaceflinger_qcom_extensions",
+    name: "camera_needs_client_info_lib",
     module_type: "cc_defaults",
     config_namespace: "mikuGlobalVars",
-    value_variables: ["qcom_display_headers_namespace"],
-    properties: [
-        "cppflags",
-        "header_libs",
-    ],
-}
-
-soong_config_module_type {
-    name: "needs_camera_boottime",
-    module_type: "cc_defaults",
-    config_namespace: "mikuGlobalVars",
-    bool_variables: ["needs_camera_boottime"],
-    properties: ["cppflags"],
-}
-
-needs_camera_boottime {
-    name: "needs_camera_boottime_defaults",
-    soong_config_variables: {
-        needs_camera_boottime: {
-            cppflags: ["-DTARGET_CAMERA_BOOTTIME_TIMESTAMP"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "legacy_hw_disk_encryption",
-    module_type: "cc_defaults",
-    config_namespace: "mikuQcomVars",
-    bool_variables: ["legacy_hw_disk_encryption"],
-    properties: ["cppflags"],
-}
-
-legacy_hw_disk_encryption {
-    name: "legacy_hw_disk_encryption_defaults",
-    soong_config_variables: {
-        legacy_hw_disk_encryption: {
-            cppflags: ["-DLEGACY_HW_DISK_ENCRYPTION"],
-        },
-    },
-}
-
-surfaceflinger_qcom_extensions {
-    name: "surfaceflinger_qcom_ext_defaults",
-    soong_config_variables: {
-        qcom_display_headers_namespace: {
-            cppflags: ["-DQCOM_UM_FAMILY"],
-            header_libs: ["//%s:display_intf_headers"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "has_memfd_backport",
-    module_type: "cc_defaults",
-    config_namespace: "mikuGlobalVars",
-    bool_variables: ["has_memfd_backport"],
-    properties: ["cppflags"],
-}
-
-has_memfd_backport {
-    name: "has_memfd_backport_defaults",
-    soong_config_variables: {
-        has_memfd_backport: {
-            cppflags: ["-DHAS_MEMFD_BACKPORT"],
-        },
-    },
-}
-
-vendor_init {
-    name: "vendor_init_defaults",
-    soong_config_variables: {
-        target_init_vendor_lib: {
-            whole_static_libs: ["%s"],
-        },
-    },
-}
-
-soong_config_module_type {
-    name: "qti_camera_device",
-    module_type: "cc_defaults",
-    config_namespace: "mikuGlobalVars",
-    bool_variables: ["uses_qti_camera_device"],
+    bool_variables: ["camera_needs_client_info_lib"],
     properties: [
         "cppflags",
         "shared_libs",
     ],
 }
 
-qti_camera_device {
-    name: "qti_camera_device_defaults",
+camera_needs_client_info_lib {
+    name: "camera_needs_client_info_lib_defaults",
     soong_config_variables: {
-        uses_qti_camera_device: {
-            cppflags: ["-DQTI_CAMERA_DEVICE"],
-            shared_libs: ["vendor.qti.hardware.camera.device@1.0"],
+        camera_needs_client_info_lib: {
+            cppflags: ["-DCAMERA_NEEDS_CLIENT_INFO_LIB"],
+            shared_libs: ["vendor.oneplus.hardware.camera@1.0"],
+        },
+    },
+}
+
+// QCOM specific config modules
+soong_config_module_type {
+    name: "librmnetctl_pre_uplink",
+    module_type: "cc_defaults",
+    config_namespace: "mikuQcomVars",
+    bool_variables: ["uses_pre_uplink_features_netmgrd"],
+    properties: ["cflags"],
+}
+
+librmnetctl_pre_uplink {
+    name: "librmnetctl_pre_uplink_defaults",
+    soong_config_variables: {
+        uses_pre_uplink_features_netmgrd: {
+            cflags: ["-DNO_UPLINK_FEATURES"],
         },
     },
 }
@@ -229,54 +192,22 @@ extended_compress_format {
 }
 
 soong_config_module_type {
-    name: "egl_display_array",
-    module_type: "cc_defaults",
-    config_namespace: "mikuGlobalVars",
-    bool_variables: ["uses_egl_display_array"],
-    properties: ["cflags"],
-}
-
-egl_display_array {
-    name: "egl_display_array_defaults",
-    soong_config_variables: {
-        uses_egl_display_array: {
-            cflags: ["-DEGL_DISPLAY_ARRAY"],
-        },
-    },
-}
-
-// NVIDIA specific config modules
-soong_config_module_type {
-    name: "nvidia_enhancements",
-    module_type: "cc_defaults",
-    config_namespace: "mikuNvidiaVars",
-    bool_variables: ["uses_nvidia_enhancements"],
-    properties: ["cppflags"],
-}
-
-nvidia_enhancements {
-    name: "nvidia_enhancements_defaults",
-    soong_config_variables: {
-        uses_nvidia_enhancements: {
-            cppflags: ["-DNV_ANDROID_FRAMEWORK_ENHANCEMENTS"],
-        },
-    },
-}
-
-// QCOM specific config modules
-soong_config_module_type {
-    name: "librmnetctl_pre_uplink",
+    name: "surfaceflinger_qcom_extensions",
     module_type: "cc_defaults",
     config_namespace: "mikuQcomVars",
-    bool_variables: ["uses_pre_uplink_features_netmgrd"],
-    properties: ["cflags"],
+    value_variables: ["qcom_display_headers_namespace"],
+    properties: [
+        "cppflags",
+        "header_libs",
+    ],
 }
 
-librmnetctl_pre_uplink {
-    name: "librmnetctl_pre_uplink_defaults",
+surfaceflinger_qcom_extensions {
+    name: "surfaceflinger_qcom_ext_defaults",
     soong_config_variables: {
-        uses_pre_uplink_features_netmgrd: {
-            cflags: ["-DNO_UPLINK_FEATURES"],
+        qcom_display_headers_namespace: {
+            cppflags: ["-DQCOM_UM_FAMILY"],
+            header_libs: ["//%s:display_intf_headers"],
         },
     },
 }
