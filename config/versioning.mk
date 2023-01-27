@@ -25,7 +25,7 @@ MIKU_ROM_VERSION := TDA_0.9.0
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
 ifeq ($(MIKU_GAPPS), true)
-    $(call inherit-product, vendor/gapps/common/common-vendor.mk)
+    $(call inherit-product, vendor/gms/gms.mk)
     MIKU_TYPE = GAPPS-
 endif
 
