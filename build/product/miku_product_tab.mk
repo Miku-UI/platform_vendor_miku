@@ -31,6 +31,9 @@ PRODUCT_PACKAGES += \
     androidx.window.extensions
 
 # Applications
+ifneq ($(TARGET_NO_APERTURE),true)
+    PRODUCT_PACKAGES += Aperture
+endif
 PRODUCT_PACKAGES += \
     Gboard \
     LiveWallpapersPicker \

@@ -27,6 +27,9 @@ $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)
 endif
 
 # Applications
+ifneq ($(TARGET_NO_APERTURE),true)
+    PRODUCT_PACKAGES += Aperture
+endif
 PRODUCT_PACKAGES += \
     Gboard \
     LiveWallpapersPicker \
