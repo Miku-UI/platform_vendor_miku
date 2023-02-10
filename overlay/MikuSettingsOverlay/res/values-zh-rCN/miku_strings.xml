@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Miku UI
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+
+    <!-- Category Titles -->
+    <string name="network_category_title">无线连接</string>
+    <string name="apps_category_title">应用程式</string>
+    <string name="display_and_sound_category_title">显示与声音</string>
+    <string name="security_category_title">安全</string>
+    <string name="others_category_title">杂七杂八の东西</string>
+
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_value">值: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">默认</string>
+    <string name="custom_seekbar_default_value_to_set">默认值: <xliff:g id="v">%s</xliff:g>\n点击设置</string>
+    <string name="custom_seekbar_default_value_is_set">已设为默认值</string>
+
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">三指截屏</string>
+    <string name="three_finger_gesture_summary">滑动你的三根手指~来截图叭！</string>
+
+    <!-- Miku build type -->
+    <string name="miku_type">❤构建组织❤</string>
+
+    <!-- Miku version -->
+    <string name="miku_version">Miku UI Ver.</string>
+    <string name="miku_version_uri" translatable="false">https://github.com/Miku-UI</string>
+
+    <!-- SELinux Status -->
+    <string name="selinux_status">SELinux 状态</string>
+    <string name="selinux_status_disabled">被...禁用了？这可不太对劲</string>
+    <string name="selinux_status_permissive">宽容~请谨慎行事~</string>
+    <string name="selinux_status_enforcing">强制执行！</string>
+
+    <!-- Status Bar Lyric -->
+    <string name="status_bar_show_lyric_title">状态栏歌词（需要应用支持哦）</string>
+    <string name="status_bar_show_lyric_summary">感谢Shelling的贡献~</string>
+
+    <!-- Units -->
+    <string name="unit_seconds">秒</string>
+    <string name="unit_milliseconds">毫秒</string>
+    <string name="unit_pixels">dp</string>
+
+    <!-- Global Actions -->
+    <string name="global_actions_advanced_reboot_title">启用高级重启</string>
+    <string name="global_actions_advanced_reboot_summary">打开以后将会在重启菜单显示额外的选项噢</string>
+
+    <!-- Volume link notification -->
+    <string name="volume_link_notification_title">把铃声与通知音量绑定在一起~</string>
+
+    <!-- Double Tap to Sleep Statusbar -->
+    <string name="double_tap_sleep_gesture_title">拍头锁屏</string>
+    <string name="double_tap_sleep_gesture_summary">在状态栏或者锁屏界面快速连拍两下就可以锁屏哦(*￣▽￣*)</string>
+
+    <!-- Preference and settings suggestion title text for screen off UDFPS (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="default">摁住屏下指纹来解锁手机</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">摁住屏下指纹来解锁平板</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="device">摁住屏下指纹来解锁设备</string>
+    <!-- Summary text for screen off UDFPS [CHAR LIMIT=NONE]-->
+    <string name="ambient_display_screen_off_udfps_summary">息屏的时候，摁住屏下指纹就可以解锁啦！</string>
+
+</resources>

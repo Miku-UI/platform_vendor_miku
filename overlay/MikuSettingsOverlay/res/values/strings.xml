@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Miku UI
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Category Titles -->
+    <string name="network_category_title">Network</string>
+    <string name="apps_category_title">Applications</string>
+    <string name="display_and_sound_category_title">Display and Sound</string>
+    <string name="security_category_title">Security</string>
+    <string name="others_category_title">Others</string>
+
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">by default</string>
+    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong tap to set</string>
+    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+
+    <!-- Auto Reboot -->
+    <string name="auto_reboot_title">Auto reboot</string>
+    <string name="auto_reboot_summary">Automatically reboot your Miku, if the phone hasn\'t been unlocked within the selected number of hours.</string>
+
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">Swipe to screenshot</string>
+    <string name="three_finger_gesture_summary">Swipe down your three fingers, and～～it is done！</string>
+
+    <!-- Maintainer name -->
+    <string name="maintainer_name">❤Master❤</string>
+    <string name="miku_maintainer_uri" translatable="false">http://127.0.0.1</string>
+
+    <!-- Miku build type -->
+    <string name="miku_type">❤Build type❤</string>
+
+    <!-- Miku version -->
+    <string name="miku_version">Miku UI Ver.</string>
+    <string name="miku_version_uri" translatable="false">https://github.com/Miku-UI</string>
+
+    <!-- SELinux Status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled? That is weird...</string>
+    <string name="selinux_status_permissive">Permissive~Be careful~</string>
+    <string name="selinux_status_enforcing">Enforcing.You are safe now.</string>
+
+     <!-- Status Bar Lyric -->
+    <string name="status_bar_show_lyric_title">Status bar lyric (need App support)</string>
+    <string name="status_bar_show_lyric_summary">Show lyric in status bar. Thanks to @cjybyjk ! </string>
+
+    <!-- Units -->
+    <string name="unit_seconds">seconds</string>
+    <string name="unit_milliseconds">milliseconds</string>
+    <string name="unit_pixels">dp</string>
+
+    <!-- Global Actions -->
+    <string name="global_actions_advanced_reboot_title">Enable advanced restart</string>
+    <string name="global_actions_advanced_reboot_summary">Show additional reboot options in power menu</string>
+
+    <!-- Volume link notification -->
+    <string name="volume_link_notification_title">Link ring &amp; notification volumes</string>
+
+    <!-- Double Tap to Sleep Statusbar -->
+    <string name="double_tap_sleep_gesture_title">DT2S</string>
+    <string name="double_tap_sleep_gesture_summary">Double-tap anywhere on the status bar or lockscreen to put the Miku to sleep(*￣▽￣*)</string>
+
+    <!-- Preference and settings suggestion title text for screen off UDFPS (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="default">Long press on fingerprint sensor to unlock phone</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">Long press on fingerprint sensor to unlock tablet</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="device">Long press on fingerprint sensor to unlock device</string>
+    <!-- Summary text for screen off UDFPS [CHAR LIMIT=NONE]-->
+    <string name="ambient_display_screen_off_udfps_summary">To wake up your screen and unlock, long press your under-display fingerprint sensor.</string>
+
+</resources>
