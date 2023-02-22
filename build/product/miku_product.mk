@@ -21,6 +21,9 @@ $(call inherit-product, vendor/miku/config/versioning.mk)
 # Inherit from our overlay
 $(call inherit-product, vendor/miku/config/overlay.mk)
 
+# Sign for official build
+$(call inherit-product-if-exists, vendor/miku-secret/keys/sign.mk)
+
 ifneq ($(TARGET_DISABLE_EPPE),true)
 # Require all requested packages to exist
 $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)/$(TARGET_PRODUCT).mk),product_manifest.xml rild Calendar Launcher3 Launcher3Go Launcher3QuickStep Launcher3QuickStepGo android.hidl.memory@1.0-impl.vendor vndk_apex_snapshot_package)
