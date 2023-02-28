@@ -73,4 +73,8 @@
     <!-- Summary text for screen off UDFPS [CHAR LIMIT=NONE]-->
     <string name="ambient_display_screen_off_udfps_summary">息屏的时候，摁住屏下指纹就可以解锁啦！</string>
 
+    <!-- Performance Mode -->
+    <string name="cpu_performance_mode_title">最高性能</string>
+    <string name="cpu_performance_mode_summary">Miku UI将会让CPU始终运行在最高频率！可能会显著降低电池续航喔。</string>
+
 </resources>
