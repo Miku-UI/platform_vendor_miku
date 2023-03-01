@@ -59,6 +59,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.ringtone=miku_secret.ogg \
     ro.config.notification_sound=miku_noti_msg.ogg
 
+# Performance Mode
+PRODUCT_COPY_FILES += \
+    vendor/miku/prebuilt/common/etc/init/init.miku.performance_mode.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.miku.performance_mode.rc
+
 # MikuWallpapers
 PRODUCT_PACKAGES += \
     MikuWallpapers
