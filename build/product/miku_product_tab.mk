@@ -17,9 +17,7 @@
 
 include vendor/miku/build/product/miku_product_common.mk
 
-# 2-Pane layout
-PRODUCT_PACKAGES += \
-    androidx.window.extensions
+$(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
