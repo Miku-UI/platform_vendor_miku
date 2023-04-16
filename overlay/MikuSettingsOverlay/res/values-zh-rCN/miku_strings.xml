@@ -77,4 +77,8 @@
     <string name="cpu_performance_mode_title">最高性能</string>
     <string name="cpu_performance_mode_summary">Miku UI将会让CPU始终运行在最高频率！可能会显著降低电池续航喔。</string>
 
+    <!-- Navigation bar hint -->
+    <string name="show_navbar_gesture_bar_title">小白条</string>
+    <string name="show_navbar_gesture_bar_summary">在屏幕的底部显示小白条，不过开启Dock栏的状态下，小白条不受控制哦</string>
+
 </resources>
