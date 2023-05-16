@@ -37,6 +37,7 @@ SOONG_CONFIG_mikuGlobalVars += \
     aapt_version_code \
     additional_gralloc_10_usage_bits \
     camera_needs_client_info_lib \
+    gralloc_handle_has_custom_content_md_reserved_size \
     gralloc_handle_has_reserved_size \
     target_init_vendor_lib \
     target_power_libperfmgr_mode_extension_lib \
@@ -55,6 +56,7 @@ SOONG_CONFIG_mikuQcomVars += \
 endif
 
 # Soong bool variables
+SOONG_CONFIG_mikuGlobalVars_gralloc_handle_has_custom_content_md_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE)
 SOONG_CONFIG_mikuGlobalVars_gralloc_handle_has_reserved_size := $(TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE)
 SOONG_CONFIG_mikuGlobalVars_camera_needs_client_info_lib := $(TARGET_CAMERA_NEEDS_CLIENT_INFO_LIB)
 SOONG_CONFIG_mikuQcomVars_supports_extended_compress_format := $(AUDIO_FEATURE_ENABLED_EXTENDED_COMPRESS_FORMAT)
@@ -62,6 +64,7 @@ SOONG_CONFIG_mikuQcomVars_uses_pre_uplink_features_netmgrd := $(TARGET_USES_PRE_
 
 # Set default values
 TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
+TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
 TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_INIT_VENDOR_LIB ?= vendor_init
 TARGET_POWER_LIBPERFMGR_MODE_EXTENSION_LIB ?= libperfmgr-ext
