@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+/*
+**
+** Copyright 2021-2023 Miku UI
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="random_msg_after_shake">
+    <item>バックグラウンドのアプリをクリアしました！</item>
+    <item>振るのはやめて～めまいがするぅ～！(((φ(◎ロ◎;)φ)))</item>
+    <item>忘れ物はないよね？(≧﹏≦)</item>
+    <item>私を抱きしめて！o(≧口≦)o</item>
+    <item>スマートフォンを投げないで～！(/ω＼*)</item>
+    <item>はぁ...何でこんなに激しいの...！（つ﹏⊂）</item>
+    <item>あっｗｗｗｗｗｗｗ...(￣┰￣*)</item>
+    <item>何してるの！Σ(っ °Д °;)っ</item>
+    <item>(ダウン)</item>
+    <item>この感覚をあなたにも味わって欲しいな...(╯‵□′)╯︵┻━┻</item>
+    <item>いやっほ～い！ さぁ、始めますよって...あれ？（〒▽〒）</item>
+    <item>ウワサだとスマートフォンを100 回振るとドカーンと爆発しちゃうらしいですよ！爆発しちゃうらしいですよ。¯\\_(ツ)_/¯</item>
+    <item>(めまい)</item>
+    <item>報告します！ バックグラウンドで起動しているタスクはもうありません！(^^ゞ</item>
+    <item>ギュッと抱きしめて...o(*////▽////*)q</item>
+    <item>ドーン！ バックグラウンドのアプリはすべて滅びました！(*￣▽￣*)</item>
+    <item>振って！ヽ（≧□≦）ノ</item>
+    <item>Treeeeeeeeeeeeemblingヽ(゜▽゜　)－</item>
+  </string-array>
+</resources>
