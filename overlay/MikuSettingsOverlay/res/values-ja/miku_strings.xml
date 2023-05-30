@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright 2021 Miku UI
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,7 +54,7 @@
   <!-- Volume link notification -->
   <string name="volume_link_notification_title">着信音と通知音をリンク</string>
   <!-- Double Tap to Sleep Statusbar -->
-  <string name="double_tap_sleep_gesture_title">DT2S</string>
+  <string name="double_tap_sleep_gesture_title">ダブルタップでスリープ</string>
   <string name="double_tap_sleep_gesture_summary">ステータスバーやロック画面上の任意の場所をダブルタップでミクをスリープにしちゃう事ができます (*￣▽￣*)</string>
   <!-- Preference and settings suggestion title text for screen off UDFPS (phone) [CHAR LIMIT=60]-->
   <string name="ambient_display_screen_off_udfps_title" product="default">指紋センサーを長押しでロックを解除</string>
