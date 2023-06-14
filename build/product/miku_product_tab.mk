@@ -75,3 +75,8 @@ PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 
 # Disable extra StrictMode features on all non-engineering builds
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
+
+# Boost Framework
+ifeq ($(TARGET_SUPPORT_MIKU_BOOST_FRAMEWORK),true)
+$(call inherit-product, device/qcom/perf/BoostFramework.mk)
+endif
