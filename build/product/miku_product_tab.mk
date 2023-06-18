@@ -77,6 +77,6 @@ PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := everything
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.sys.strictmode.disable=true
 
 # Boost Framework
-ifeq ($(TARGET_SUPPORT_MIKU_BOOST_FRAMEWORK),true)
+ifneq ($(TARGET_MIKU_BOOST_FRAMEWORK_PLATFORM),)
 $(call inherit-product, device/qcom/perf/BoostFramework.mk)
 endif
