@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 
-PLATFORM_MIKU_RELEASE := TDA
+PLATFORM_MIKU_RELEASE := Udon
 PLATFORM_MIKU_VERSION := $(PLATFORM_MIKU_RELEASE).$(shell date +%y%m%d%H)
 
-MIKU_ROM_VERSION := TDA_1.0.1
+MIKU_ROM_VERSION := Udon_0.1.0
 
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
