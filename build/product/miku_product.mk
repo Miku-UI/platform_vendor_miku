@@ -41,7 +41,6 @@ PRODUCT_PACKAGES += \
     PartnerBookmarksProvider \
     QuickAccessWallet \
     Stk \
-    TimeZoneUpdater \
     ThemePicker \
     ThemesStub
 

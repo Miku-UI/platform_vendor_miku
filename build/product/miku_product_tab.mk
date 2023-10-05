@@ -42,7 +42,6 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     MUBB \
     PartnerBookmarksProvider \
-    TimeZoneUpdater \
     ThemePicker \
     ThemesStub
 
