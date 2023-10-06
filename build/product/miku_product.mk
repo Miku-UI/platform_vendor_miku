@@ -30,6 +30,7 @@ $(call enforce-product-packages-exist-internal,$(wildcard device/*/$(MIKU_BUILD)
 endif
 
 # Applications
+TARGET_NO_APERTURE = true
 ifneq ($(TARGET_NO_APERTURE),true)
     PRODUCT_PACKAGES += Aperture
 endif
