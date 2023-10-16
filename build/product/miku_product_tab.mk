@@ -34,7 +34,6 @@ PRODUCT_PACKAGES += \
     androidx.window.extensions
 
 # Applications
-TARGET_NO_APERTURE = true
 ifneq ($(TARGET_NO_APERTURE),true)
     PRODUCT_PACKAGES += Aperture
 else
