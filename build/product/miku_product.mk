@@ -64,6 +64,7 @@ PRODUCT_PACKAGES += \
 # Ringtone
 PRODUCT_COPY_FILES += \
     vendor/miku/ringtone/miku_secret.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_secret.ogg \
+    vendor/miku/ringtone/miku_deep_sea_girl.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_deep_sea_girl.ogg \
     vendor/miku/ringtone/miku_noti_msg.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/notifications/miku_noti_msg.ogg
 
 PRODUCT_PRODUCT_PROPERTIES += \
