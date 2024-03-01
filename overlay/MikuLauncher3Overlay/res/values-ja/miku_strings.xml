@@ -17,9 +17,7 @@
 */
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-
     <!-- Kill App recents action shortcut -->
-    <string name="recent_task_option_kill_app">强制关闭</string>
-    <string name="recents_app_killed">App 已经被强制关闭</string>
-
+    <string name="recent_task_option_kill_app">強制停止</string>
+    <string name="recents_app_killed">アプリを強制停止しました</string>
 </resources>
