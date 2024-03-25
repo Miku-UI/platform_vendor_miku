@@ -43,7 +43,7 @@ except ImportError:
 DEBUG = False
 
 custom_local_manifest = ".repo/local_manifests/diva.xml"
-custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', 'Udon')
+custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', 'Udon_v2')
 custom_dependencies = "miku.dependencies"
 org_manifest = "diva"  # leave empty if org is provided in manifest
 org_display = "Diva-Room"  # needed for displaying
