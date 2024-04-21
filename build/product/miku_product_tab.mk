@@ -25,3 +25,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     MikuTabletFrameworksOverlay \
     MikuTabletSystemUIOverlay
+
+# Settings
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.settings.large_screen_opt.enabled=true
