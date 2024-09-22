@@ -30,6 +30,11 @@ endif
 
 BOARD_USES_ADRENO := true
 
+# Disable thermal HAL netlink framework on UM platforms that do not support it
+ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
+    $(call soong_config_set,qti_thermal,netlink,false)
+endif
+
 # Add qtidisplay to soong config namespaces
 SOONG_CONFIG_NAMESPACES += qtidisplay
 
