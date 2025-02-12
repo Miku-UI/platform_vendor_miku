@@ -20,7 +20,7 @@
 PLATFORM_MIKU_RELEASE := Vampire_v2
 PLATFORM_MIKU_VERSION := $(PLATFORM_MIKU_RELEASE).$(shell date +%y%m%d%H)
 
-MIKU_ROM_VERSION := Vampire_0.6.0
+MIKU_ROM_VERSION := Vampire_0.6.1
 
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
