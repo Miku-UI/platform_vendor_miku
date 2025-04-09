@@ -79,6 +79,6 @@
 
     <!-- Navigation bar hint -->
     <string name="show_navbar_gesture_bar_title">小白条</string>
-    <string name="show_navbar_gesture_bar_summary">在屏幕的底部显示小白条，不过开启Dock栏的状态下，小白条不受控制哦</string>
+    <string name="show_navbar_gesture_bar_summary">在屏幕的底部显示小白条</string>
 
 </resources>
