@@ -67,6 +67,9 @@
 #                                          kernel sources are present
 #   TARGET_WITH_KERNEL_SU              = Optional, if true, build kernel with KernelSU
 #
+#   TARGET_PREBUILT_KERNEL_HEADERS     = Optional, if this is set, don't warn about prebuilt
+#                                          kernel because headers should match
+#
 #   TARGET_MERGE_DTBS_WILDCARD         = Optional, limits the .dtb files used to generate the
 #                                          final DTB image when using QCOM's merge_dtbs script.
 
@@ -135,13 +138,15 @@ ifeq "$(wildcard $(KERNEL_SRC) )" ""
     endif
 
     ifneq ($(HAS_PREBUILT_KERNEL),)
-        $(warning ***************************************************************)
-        $(warning * Using prebuilt kernel binary instead of source              *)
-        $(warning * THIS IS DEPRECATED, AND IS NOT ADVISED.                     *)
-        $(warning * Please configure your device to download the kernel         *)
-        $(warning * source repository to $(KERNEL_SRC))
-        $(warning * for more information                                        *)
-        $(warning ***************************************************************)
+        ifeq ($(TARGET_PREBUILT_KERNEL_HEADERS),)
+            $(warning ***************************************************************)
+            $(warning * Using prebuilt kernel binary instead of source              *)
+            $(warning * THIS IS DEPRECATED, AND IS NOT ADVISED.                     *)
+            $(warning * Please configure your device to download the kernel         *)
+            $(warning * source repository to $(KERNEL_SRC))
+            $(warning * for more information                                        *)
+            $(warning ***************************************************************)
+        endif
         FULL_KERNEL_BUILD := false
         KERNEL_BIN := $(TARGET_PREBUILT_KERNEL)
     else
