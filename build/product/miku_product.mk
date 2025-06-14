@@ -90,6 +90,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     apns-conf.xml
 
+# Enable Material Design 3 ExpressiveAdd commentMore actions
+PRODUCT_PRODUCT_PROPERTIES += \
+    is_expressive_design_enabled=true
+
 # MikuWallpapers
 PRODUCT_PACKAGES += \
     MikuWallpapers

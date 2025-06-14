@@ -86,6 +86,10 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_COPY_FILES += \
     vendor/miku/prebuilt/common/etc/init/init.miku.performance_mode.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/init.miku.performance_mode.rc
 
+# Enable Material Design 3 ExpressiveAdd commentMore actions
+PRODUCT_PRODUCT_PROPERTIES += \
+    is_expressive_design_enabled=true
+
 # MikuWallpapers
 PRODUCT_PACKAGES += \
     MikuWallpapers
