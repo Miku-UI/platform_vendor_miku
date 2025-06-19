@@ -25,7 +25,7 @@ MIKU_ROM_VERSION := Vampire_0.9.1
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
 ifeq ($(MIKU_GAPPS), true)
-    $(call inherit-product, vendor/gms/gms.mk)
+    $(call inherit-product, vendor/gapps/arm64/arm64-vendor.mk)
     MIKU_TYPE = GAPPS-
 endif
 
