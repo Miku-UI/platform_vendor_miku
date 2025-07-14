@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright 2021 Miku UI
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Category Titles -->
+    <string name="network_category_title">網路與網際網路</string>
+    <string name="apps_category_title">應用程式</string>
+    <string name="display_and_sound_category_title">顯示與音效</string>
+    <string name="security_category_title">安全性</string>
+    <string name="others_category_title">有的沒的五四三</string>
+
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_value">量值：<xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">為預設值</string>
+    <string name="custom_seekbar_default_value_to_set">預設值：
+    <xliff:g id="v">%s</xliff:g>\n長按以設定</string>
+    <string name="custom_seekbar_default_value_is_set">已設定預設值</string>
+
+    <!-- Auto Reboot -->
+    <string name="auto_reboot_title">自動重新啟動</string>
+    <string name="auto_reboot_summary">將於持續未解鎖一段時間後自動重新啟動您的初音。</string>
+
+    <!-- Three-fingers-swipe to screenshot -->
+    <string name="three_finger_gesture">滑動以節圖</string>
+    <string name="three_finger_gesture_summary">使用三隻手指滑動就～～完成啦！</string>
+
+    <!-- Maintainer name -->
+    <string name="maintainer_name">❤主人❤</string>
+
+    <!-- Miku build type -->
+    <string name="miku_type">❤構件類型❤</string>
+
+    <!-- Miku version -->
+    <string name="miku_version">Miku UI 版本</string>
+    <string name="miku_version_uri" translatable="false">https://github.com/Miku-UI</string>
+
+    <!-- SELinux Status -->
+    <string name="selinux_status">SELinux 狀態</string>
+    <string name="selinux_status_disabled">已停用？？牙敗所勒～</string>
+    <string name="selinux_status_permissive">寬容模式～請小心歐～</string>
+    <string name="selinux_status_enforcing">強制模式！您可以放心了～</string>
+
+     <!-- Status Bar Lyric -->
+    <string name="status_bar_show_lyric_title">狀態欄歌詞（部份應用程式支援）</string>
+    <string name="status_bar_show_lyric_summary">於狀態欄中顯示歌詞。與 Miku UI Lyrics Stub 搭配使用也不錯歐！</string>
+
+    <!-- Units -->
+    <string name="unit_seconds">秒</string>
+    <string name="unit_milliseconds">毫秒</string>
+    <string name="unit_pixels">dp</string>
+
+    <!-- Global Actions -->
+    <string name="global_actions_advanced_reboot_title">啟用進階重新啟動</string>
+    <string name="global_actions_advanced_reboot_summary">於重新啟動按鈕內顯示更多選項（如 bootloader、recovery 等）</string>
+
+    <!-- Volume link notification -->
+    <string name="volume_link_notification_title">把鈴聲與音料綁在一起～</string>
+
+    <!-- Double Tap to Sleep Statusbar -->
+    <string name="double_tap_sleep_gesture_title">雙擊以鎖定</string>
+    <string name="double_tap_sleep_gesture_summary">於鎖定畫面或狀態欄的任何地方雙擊可以讓您的初音小小休息一下(*￣▽￣*)</string>
+
+    <!-- Preference and settings suggestion title text for screen off UDFPS (phone) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="default">長按指紋感應以解鎖手機</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (tablet) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="tablet">長按指紋感應以解鎖平板</string>
+    <!-- Preference and settings suggestion title text for screen off UDFPS  (device) [CHAR LIMIT=60]-->
+    <string name="ambient_display_screen_off_udfps_title" product="device">長按指紋感應以解鎖裝置</string>
+    <!-- Summary text for screen off UDFPS [CHAR LIMIT=NONE]-->
+    <string name="ambient_display_screen_off_udfps_summary">以開啟螢幕並解鎖請長按背面的指紋辨識感應。</string>
+
+</resources>
