@@ -17,6 +17,15 @@
 
 include vendor/miku/build/product/miku_product_common.mk
 
-# 2-Pane layout
 PRODUCT_PACKAGES += \
-    androidx.window.extensions
+    messaging \
+    QuickAccessWallet \
+    Stk
+
+# World APN list
+PRODUCT_PACKAGES += \
+    apns-conf.xml
+
+# Enable support of one-handed mode
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.support_one_handed_mode=true

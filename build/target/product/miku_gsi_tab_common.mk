@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021-2022 Miku UI
+# Copyright (C) 2025 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,19 +14,6 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
-include $(CLEAR_VARS)
+$(call inherit-product, vendor/miku/build/product/miku_product_tab.mk)
 
-LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
-
-LOCAL_USE_AAPT2 := true
-
-LOCAL_PACKAGE_NAME := MikuWallpapers
-
-LOCAL_PRODUCT_MODULE := true
-
-LOCAL_AAPT_FLAGS := --auto-add-overlay
-
-LOCAL_SDK_VERSION := current
-
-include $(BUILD_PACKAGE)
+include vendor/miku/build/target/product/miku_gsi_common.mk

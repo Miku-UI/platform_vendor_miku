@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2018 The Android Open Source Project
-# Copyright (C) 2021-2022 Miku UI
+# Copyright (C) 2025 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +14,6 @@
 # limitations under the License.
 #
 
-include vendor/miku/build/product/miku_product_common.mk
+$(call inherit-product, vendor/miku/build/product/miku_product_phone.mk)
 
-# 2-Pane layout
-PRODUCT_PACKAGES += \
-    androidx.window.extensions
+include vendor/miku/build/target/product/miku_gsi_common.mk
