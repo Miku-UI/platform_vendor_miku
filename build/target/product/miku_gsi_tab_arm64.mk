@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2018 The Android Open Source Project
-# Copyright (C) 2021-2022 Miku UI
+# Copyright (C) 2025 Miku UI
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,8 +14,8 @@
 # limitations under the License.
 #
 
-include vendor/miku/build/product/miku_product_common.mk
+include device/generic/common/gsi_arm64.mk
+include vendor/miku/build/target/product/miku_gsi_tab_common.mk
 
-# 2-Pane layout
-PRODUCT_PACKAGES += \
-    androidx.window.extensions
+PRODUCT_NAME := miku_gsi_tab_arm64
+PRODUCT_MODEL := Tablet GSI on ARM64
