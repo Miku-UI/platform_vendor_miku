@@ -29,7 +29,7 @@
 
     <!-- Auto Reboot -->
     <string name="auto_reboot_title">自動重新啟動</string>
-    <string name="auto_reboot_summary">將於持續未解鎖一段時間後自動重新啟動您的初音。</string>
+    <string name="auto_reboot_summary">將於持續未解鎖一段時間後自動重新啟動你的初音。</string>
 
     <!-- Three-fingers-swipe to screenshot -->
     <string name="three_finger_gesture">滑動以節圖</string>
@@ -49,7 +49,7 @@
     <string name="selinux_status">SELinux 狀態</string>
     <string name="selinux_status_disabled">已停用？？牙敗所勒～</string>
     <string name="selinux_status_permissive">寬容模式～請小心歐～</string>
-    <string name="selinux_status_enforcing">強制模式！您可以放心了～</string>
+    <string name="selinux_status_enforcing">強制模式！你可以放心了～</string>
 
      <!-- Status Bar Lyric -->
     <string name="status_bar_show_lyric_title">狀態欄歌詞（部份應用程式支援）</string>
@@ -69,7 +69,7 @@
 
     <!-- Double Tap to Sleep Statusbar -->
     <string name="double_tap_sleep_gesture_title">雙擊以鎖定</string>
-    <string name="double_tap_sleep_gesture_summary">於鎖定畫面或狀態欄的任何地方雙擊可以讓您的初音小小休息一下(*￣▽￣*)</string>
+    <string name="double_tap_sleep_gesture_summary">於鎖定畫面或狀態欄的任何地方雙擊可以讓你的初音小小休息一下(*￣▽￣*)</string>
 
     <!-- Preference and settings suggestion title text for screen off UDFPS (phone) [CHAR LIMIT=60]-->
     <string name="ambient_display_screen_off_udfps_title" product="default">長按指紋感應以解鎖手機</string>
