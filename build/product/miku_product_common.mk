@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+# Inherit from custom extra
+$(call inherit-product-if-exists, vendor/extra/product.mk)
+
 # Inherit from our versioning
 $(call inherit-product, vendor/miku/config/versioning.mk)
 
