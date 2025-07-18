@@ -20,3 +20,8 @@ include vendor/miku/build/product/miku_product_common.mk
 # 2-Pane layout
 PRODUCT_PACKAGES += \
     androidx.window.extensions
+
+# Overlays
+PRODUCT_PACKAGES += \
+    MikuTabletFrameworksOverlay \
+    MikuTabletSystemUIOverlay
