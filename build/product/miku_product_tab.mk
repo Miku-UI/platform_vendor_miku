@@ -17,6 +17,13 @@
 
 include vendor/miku/build/product/miku_product_common.mk
 
-# 2-Pane layout
+$(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
+
+# Overlays
 PRODUCT_PACKAGES += \
-    androidx.window.extensions
+    MikuTabletFrameworksOverlay \
+    MikuTabletSystemUIOverlay
+
+# Settings
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.settings.large_screen_opt.enabled=true
