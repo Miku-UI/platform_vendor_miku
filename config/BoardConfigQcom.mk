@@ -196,4 +196,6 @@ ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
 endif
 
 # Add wlan to PRODUCT_SOONG_NAMESPACES
-PRODUCT_SOONG_NAMESPACES += hardware/qcom-caf/wlan
+PRODUCT_SOONG_NAMESPACES += \
+    hardware/qcom-caf/wlan \
+    hardware/qcom-caf/wlan/qcwcn
