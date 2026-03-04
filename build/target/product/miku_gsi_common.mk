@@ -20,3 +20,27 @@ PRODUCT_BRAND := Miku-UI
 PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 PRODUCT_SOONG_DEFINED_SYSTEM_IMAGE :=
 USE_SOONG_DEFINED_SYSTEM_IMAGE := false
+
+# Additional product packages for GSI builds
+PRODUCT_PACKAGES += \
+    AvatarPicker \
+    Calendar \
+    Contacts \
+    DeskClock \
+    Gallery2 \
+    Music \
+    preinstalled-packages-platform-handheld-product.xml \
+    QuickSearchBox \
+    SettingsIntelligence \
+    frameworks-base-overlays \
+    ImsServiceEntitlement \
+    preinstalled-packages-platform-telephony-product.xml \
+    initial-package-stopped-states-aosp.xml \
+    PhotoTable \
+    preinstalled-packages-platform-aosp-product.xml
+
+# Additional system_ext packages for GSI builds
+PRODUCT_PACKAGES += \
+    AccessibilityMenu \
+    WallpaperCropper \
+    EmergencyInfo
