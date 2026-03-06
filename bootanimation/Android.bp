@@ -19,3 +19,10 @@ prebuilt_media {
     src: "bootanimation.zip",
     product_specific: true,
 }
+
+install_symlink {
+    name: "bootanimation-dark.zip",
+    product_specific: true,
+    installed_location: "media/bootanimation-dark.zip",
+    symlink_target: "bootanimation.zip",
+}
