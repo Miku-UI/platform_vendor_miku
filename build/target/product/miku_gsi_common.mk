@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Maintainer
+MIKU_MASTER := 0xCAFEBABE,AmeChan
+
 PRODUCT_BRAND := Miku-UI
 
 # Disable bits enabled from AOSP GSI product makefiles which we don't support yet
