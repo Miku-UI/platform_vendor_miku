@@ -64,8 +64,8 @@ PRODUCT_PACKAGES += \
 endif
 
 # Bootanimation
-PRODUCT_COPY_FILES += \
-    vendor/miku/bootanimation/bootanimation.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
+PRODUCT_PACKAGES += \
+    bootanimation.zip
 
 # Charger mode images
 PRODUCT_PACKAGES += \
