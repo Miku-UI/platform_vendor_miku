@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+**
+** Copyright 2021-2023 Miku UI
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+  <string-array name="random_msg_after_shake">
+      <item>已清除背景應用程式！</item>
+      <item>不要再搖了！我快昏倒了(((φ(◎ロ◎;)φ)))</item>
+      <item>你還沒忘記，對吧？(≧﹏≦)</item>
+      <item>再把我握緊點！o(≧口≦)o</item>
+      <item>不！要！摔！手！機！啊！(/ω＼*)</item>
+      <item>啊啊啊～主人欺負我（つ﹏⊂）</item>
+      <item>啊啊啊...(￣┰￣*)</item>
+      <item>哩喜勒衝三小Σ(っ °Д °;)っ</item>
+      <item>（已死）</item>
+      <item>我也想體驗這種感覺RRRR...(╯‵□′)╯︵┻━┻</item>
+      <item>據說將這隻手機搖了一百次會變一杯珍珠奶茶，然後就可以拿來喝惹～(,,・ω・,,)</item>
+      <item>（昏厥中）</item>
+      <item>報告長官！所有的後台都死光光了！(^^ゞ</item>
+      <item>把我握緊一點...o(*////▽////*)q</item>
+      <item>轟！所有應用程式都死光光惹～(*￣▽￣*)</item>
+      <item>再搖一次！ヽ（≧□≦）ノ</item>
+      <item>ㄏㄨㄨㄤㄤㄤㄤㄤㄤˋヽ(゜▽゜　)－</item>
+      <item>杰哥不要啦！杰哥！(´ﾟдﾟ`)</item>
+      <item>再晃我就把你變成消波塊！(#`皿´)</item>
+      <item>此手機*並未*通過 Linus Sebastian 的晃動測試！</item>
+      <item>重音！快救救我！_(┐ ◟;ﾟдﾟ)ノ</item>
+  </string-array>
+
+</resources>
