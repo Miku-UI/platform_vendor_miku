@@ -18,6 +18,9 @@
 # Inherit from custom extra
 $(call inherit-product-if-exists, vendor/extra/product.mk)
 
+# Exclude repos from bp scanning
+PRODUCT_SOURCE_ROOT_DIRS += -prebuilts/misc/protobuf_vendorcompat
+
 # Inherit from our versioning
 $(call inherit-product, vendor/miku/config/versioning.mk)
 
