@@ -73,6 +73,12 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
 
+# fastbootd
+ifneq ($(TARGET_DISABLE_FASTBOOTD),true)
+PRODUCT_PACKAGES += \
+    fastbootd
+endif
+
 # Ringtone
 PRODUCT_COPY_FILES += \
     vendor/miku/ringtone/miku_secret.ogg:$(TARGET_COPY_OUT_PRODUCT)/media/audio/ringtones/miku_secret.ogg \
