@@ -17,10 +17,10 @@
 # limitations under the License.
 #
 
-PLATFORM_MIKU_RELEASE := Blooming
+PLATFORM_MIKU_RELEASE := Cinderella
 PLATFORM_MIKU_VERSION := $(PLATFORM_MIKU_RELEASE).$(shell date +%y%m%d%H)
 
-MIKU_ROM_VERSION := Blooming_B4
+MIKU_ROM_VERSION := Cinderella_A1
 
 TARGET_PRODUCT_SHORT := $(subst miku_,,$(TARGET_DEVICE))
 
