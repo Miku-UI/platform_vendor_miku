@@ -58,6 +58,7 @@ endif
 PRODUCT_PACKAGES += \
     Gboard \
     LiveWallpapersPicker \
+    MikuSettings \
     MikuSystemUI \
     MUBB \
     MULS_Dummy \
