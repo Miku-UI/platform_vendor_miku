@@ -58,6 +58,7 @@ endif
 PRODUCT_PACKAGES += \
     Gboard \
     LiveWallpapersPicker \
+    MikuSystemUI \
     MUBB \
     MULS_Dummy \
     PartnerBookmarksProvider \
