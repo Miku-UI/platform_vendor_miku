@@ -16,5 +16,6 @@
 aconfig_value_set {
     name: "aconfig_value_set-miku-cp2a",
     values: [
+        "aconfig-values-miku-cp2a-com.android.graphics.bootanimation.flags-all",
     ],
 }
