@@ -15,13 +15,13 @@
 //
 
 prebuilt_media {
-    name: "bootanimation.zip",
-    src: "bootanimation.zip",
+    name: "bootanimation.mba",
+    src: "bootanimation.mba",
     product_specific: true,
 }
 
 prebuilt_media {
-    name: "bootanimation-dark.zip",
-    src: "bootanimation-dark.zip",
+    name: "bootanimation-dark.mba",
+    src: "bootanimation-dark.mba",
     product_specific: true,
 }

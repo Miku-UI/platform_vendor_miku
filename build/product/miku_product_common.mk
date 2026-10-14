@@ -74,8 +74,8 @@ endif
 
 # Bootanimation
 PRODUCT_PACKAGES += \
-    bootanimation.zip \
-    bootanimation-dark.zip
+    bootanimation.mba \
+    bootanimation-dark.mba
 
 # Charger mode images
 PRODUCT_PACKAGES += \
