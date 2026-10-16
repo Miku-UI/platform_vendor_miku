@@ -80,6 +80,7 @@ PRODUCT_PACKAGES += \
 # Charger mode images
 PRODUCT_PACKAGES += \
     charger_res_images \
+    charger_res_images_vendor \
     product_charger_res_images
 
 # fastbootd
