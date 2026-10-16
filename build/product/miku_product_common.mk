@@ -80,8 +80,12 @@ PRODUCT_PACKAGES += \
 # Charger mode images
 PRODUCT_PACKAGES += \
     charger_res_images \
-    charger_res_images_vendor \
+    charger_res_images_vendor
+
+ifneq ($(TARGET_EXCLUDE_PIXEL_CHARGER), true)
+PRODUCT_PACKAGES += \
     pixel_charger_res_images
+endif
 
 # fastbootd
 ifneq ($(TARGET_DISABLE_FASTBOOTD),true)
