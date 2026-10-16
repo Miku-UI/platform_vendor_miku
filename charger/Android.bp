@@ -1,0 +1,26 @@
+//
+// Copyright 2013 The Android Open Source Project
+// Copyright 2020 The PixelROM Project
+//
+
+prebuilt_etc {
+    name: "miku_pixel_charger_images",
+    srcs: ["images/charger/*.png"],
+    relative_install_path: "res/images/charger",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "miku_pixel_charger_animation",
+    srcs: ["values/charger/*.txt"],
+    relative_install_path: "res/values/charger",
+    vendor: true,
+}
+
+phony {
+    name: "pixel_charger_res_images",
+    required: [
+        "miku_pixel_charger_images",
+        "miku_pixel_charger_animation",
+    ],
+}

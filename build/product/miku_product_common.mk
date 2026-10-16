@@ -81,7 +81,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     charger_res_images \
     charger_res_images_vendor \
-    product_charger_res_images
+    pixel_charger_res_images
 
 # fastbootd
 ifneq ($(TARGET_DISABLE_FASTBOOTD),true)
